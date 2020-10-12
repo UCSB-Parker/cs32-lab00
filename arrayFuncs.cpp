@@ -1,7 +1,8 @@
 #include <cassert>
 #include "arrayFuncs.h"
 #include <sstream> // for ostringstream
-
+#include <iostream>
+using namespace std;
 // intToString converts an int to a string
 
 std::string intToString(int i) {
@@ -39,8 +40,18 @@ std::string arrayToString(int a[], int size) {
 //  You may assume size >= 1
 
 int indexOfMax(int *a, int n) {
-  assert(n >= 1);
-  return -42; // STUB !!! Remove and replace with correct code
+    int maxindex = 0;
+    int maxval = a[0];
+    for(int j = 1; j < n; j++)
+    {
+        if(a[j] > maxval)
+        {		
+           maxindex = j;
+	   maxval = a[j];
+        }
+    }
+
+    return maxindex;
 }
 
 // indexOfMin
@@ -52,8 +63,17 @@ int indexOfMax(int *a, int n) {
 //  You may assume size >= 1
 
 int indexOfMin(int *a, int n) {
-  assert(n >= 1);
-  return -42; // STUB !!! Remove and replace with correct code
+    int minindex = 0;
+    int minval = a[0];
+    for(int j = 1; j < n; j++)
+    {
+        if(a[j] < minval)
+        {
+           minindex = j;
+           minval = a[j];
+        }
+    }
+    return minindex;
 }
 
 // swap
@@ -61,7 +81,11 @@ int indexOfMin(int *a, int n) {
 //  swap the values of a[i] and a[j]
 
 void swap(int *a, int i, int j) {
-  return; // STUB !!! Remove this line and replace with correct code
+  int temp;
+  temp = a[i];
+  a[i] = a[j];
+  a[j] = temp;
+
 
   // save the old value of a[i] in a variable 
   // make new value of a[i] be the old value of a[j]
